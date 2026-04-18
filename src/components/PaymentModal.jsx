@@ -32,6 +32,7 @@ const PaymentModal = ({ isOpen, onClose, onPaymentSuccess, isGuest = false }) =>
   }, [cashInput, finalTotal, method]);
 
   const handlePayment = async () => {
+    // Only require cash input if user is NOT a guest (i.e. Admin/Staff at counter)
     if (method === 'Cash' && !isGuest) {
       const cashValue = parseFloat(cashInput);
       if (!cashInput || isNaN(cashValue) || cashValue < finalTotal) {
